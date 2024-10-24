@@ -6,7 +6,14 @@ public enum Icone {
     INTERMEDIARIO("Intermediário"),
     AVANCADO("Avançado");
 
-    Icone(String string) {
-        
+    private String nome;
+
+    private Icone(String nome) {
+        this.nome = nome;
+    }
+    
+    public String getNome() {
+        return nome;
     }
 }
+    
