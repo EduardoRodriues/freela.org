@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html th:replace="~{adminlte3 :: layout (~{::title}, ~{::main}, _, ~{::scripts})}">
+<head>
+   <title>Formulário de Serviços</title>
+</head>
+<body>
+    <main>
+        <div class="row">
+            <div class="col-mb-6 col-sm-12">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <div class="card-title">Formulário de Serviço</div>
+                    </div>
+                    <div class="card-body">
+                         
+                        <form method="POST" th:object="${form}"> 
+
+                            <div class="row">
+                                <div class="col-md-6 col-sm-12">
+                                    <div class="form-group">
+                                        <label for="nome">Nome</label>
+                                        <input type="text" class="form-control" th:field="*{nome}">
+                                        <ul>
+                                            <li class="text-danger" th:each="erro : ${#fields.errors('nome')}" th:text="${erro}"></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-12">
+                                    <div class="form-group">
+                                        <label for="servicoOferecido">Servico Oferecido</label>
+                                        <input type="text" class="form-control" th:field="*{servicoOferecido}">
+                                        <ul>
+                                            <li class="text-danger" th:each="erro : ${#fields.errors('servicoOferecido')}" th:text="${erro}"></li>
+                                        </ul>
+                                    </div> 
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 col-sm-12"> 
+                                    <div class="form-group">
+                                        <label for="valorMedio">Valor Médio</label>
+                                        <input type="number" class="form-control" th:field="*{valorMedio}">
+                                        <ul>
+                                            <li class="text-danger" th:each="erro : ${#fields.errors('valorMedio')}" th:text="${erro}"></li>
+                                        </ul>
+                                    </div> 
+                                </div>
+                                <div class="col-md-6 col-sm-12">
+                                    <div class="form-group">
+                                        <label for="formacao">Formação</label>
+                                        <input type="text" class="form-control" th:field="*{formacao}">
+                                        <ul>
+                                            <li class="text-danger" th:each="erro : ${#fields.errors('formacao')}" th:text="${erro}"></li>
+                                        </ul>
+                                    </div> 
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 col-sm-12"> 
+                                    <div class="form-group">
+                                        <label for="principaisHabilidades">Principais Habilidades</label>
+                                        <input type="text" class="form-control" th:field="*{principaisHabilidades}">
+                                        <ul>
+                                            <li class="text-danger" th:each="erro : ${#fields.errors('principaisHabilidades')}" th:text="${erro}"></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-12">
+                                    <div class="form-group">
+                                        <label for="tempoDeAtuacao">Tempo de Atuação</label>
+                                        <input type="number" class="form-control" th:field="*{tempoDeAtuacao}">
+                                        <ul>
+                                            <li class="text-danger" th:each="erro : ${#fields.errors('tempoDeAtuacao')}" th:text="${erro}"></li>
+                                        </ul>
+                                    </div> 
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 col-sm-12"> 
+                                    <div class="form-group">
+                                        <label for="idioma">Idioma</label>
+                                        <input type="text" class="form-control" th:field="*{idioma}">
+                                        <ul>
+                                            <li class="text-danger" th:each="erro : ${#fields.errors('idioma')}" th:text="${erro}"></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-12">
+                                    <div class="form-group">
+                                        <label for="email">Email</label>
+                                        <input type="email" class="form-control" th:field="*{email}">
+                                        <ul>
+                                            <li class="text-danger" th:each="erro : ${#fields.errors('email')}" th:text="${erro}"></li>
+                                        </ul>
+                                    </div> 
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 col-sm-12"> 
+                                    <div class="form-group">
+                                        <label for="numeroTelefone">Número de Telefone</label>
+                                        <input type="number" class="form-control" th:field="*{numeroTelefone}">
+                                        <ul>
+                                            <li class="text-danger" th:each="erro : ${#fields.errors('numeroTelefone')}" th:text="${erro}"></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-12">
+                                    <div class="form-group">
+                                        <label for="linkedin">Linkedin</label>
+                                        <input type="text" class="form-control" th:field="*{linkedin}">
+                                        <ul>
+                                            <li class="text-danger" th:each="erro : ${#fields.errors('linkedin')}" th:text="${erro}"></li>
+                                        </ul>
+                                    </div> 
+                                </div>
+                            </div> 
+
+                            <div class="row">
+                                <div class="col-md-6 col-sm-12"> 
+                                    <div class="form-group">
+                                        <label for="icon">Ícone</label>
+                                        <select class="form-control" th:field="*{icone}">
+                                            <option th:each="icone : ${icones}" th:text="${icone.nome}" th:value="${icone}"></option>
+                                        </select>
+                                        <ul>
+                                            <li class="text-danger" th:each="erro : ${#fields.errors('icone')}" th:text="${erro}"></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div> 
+
+                            <button type="submit" class="btn btn-success">Salvar</button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
