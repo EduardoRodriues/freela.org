@@ -18,7 +18,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString(onlyExplicitlyIncluded = true)
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class UsuarioFreelaCadastro {
+public class UsuarioFreela {
 
     @Id
     @ToString.Include
