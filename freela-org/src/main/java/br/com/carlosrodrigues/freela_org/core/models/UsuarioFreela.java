@@ -2,6 +2,7 @@ package br.com.carlosrodrigues.freela_org.core.models;
 
 import br.com.carlosrodrigues.freela_org.core.enums.TipoUsuario;
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
@@ -13,6 +14,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
