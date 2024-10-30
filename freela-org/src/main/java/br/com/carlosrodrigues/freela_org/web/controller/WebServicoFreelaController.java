@@ -18,7 +18,7 @@ import br.com.carlosrodrigues.freela_org.web.service.WebServicoFreelaService;
 import jakarta.validation.Valid;
 
 @Controller
-@RequestMapping("admin/servico")
+@RequestMapping("/admin/servico")
 public class WebServicoFreelaController {
 
     @Autowired
@@ -36,7 +36,7 @@ public class WebServicoFreelaController {
     @GetMapping("/cadastrar")
     public ModelAndView cadastrar() {
 
-        var modelAndView = new ModelAndView("admin/servico/cadastrar");
+        var modelAndView = new ModelAndView("admin/servico/form");
         modelAndView.addObject("form", new ServicoFreelaForm());
 
         return modelAndView;
@@ -60,7 +60,7 @@ public class WebServicoFreelaController {
     @GetMapping("/{id}/editar")
     public ModelAndView editar(@PathVariable Long id) {
 
-        var modelAndView = new ModelAndView("admin/servico/editar");
+        var modelAndView = new ModelAndView("admin/servico/form");
         modelAndView.addObject("form", service.buscarPorId(id));
 
         return modelAndView;
