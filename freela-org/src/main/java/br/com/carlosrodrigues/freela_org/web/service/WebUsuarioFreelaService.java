@@ -2,6 +2,7 @@ package br.com.carlosrodrigues.freela_org.web.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.FieldError;
@@ -19,8 +20,10 @@ import br.com.carlosrodrigues.freela_org.web.mappers.WebUsuarioFreelaMapper;
 @Service
 public class WebUsuarioFreelaService {
     
+    @Autowired
     private WebUsuarioFreelaMapper mapper;
 
+    @Autowired
     private UsuarioFreelaRepository repository;
 
 
