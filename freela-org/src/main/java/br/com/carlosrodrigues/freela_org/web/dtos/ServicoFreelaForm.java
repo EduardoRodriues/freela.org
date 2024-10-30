@@ -2,10 +2,12 @@ package br.com.carlosrodrigues.freela_org.web.dtos;
 
 import java.math.BigDecimal;
 
+import org.springframework.format.annotation.NumberFormat;
+import org.springframework.format.annotation.NumberFormat.Style;
+
 import br.com.carlosrodrigues.freela_org.core.enums.Icone;
 import io.micrometer.common.lang.NonNull;
 import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.PositiveOrZero;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -20,52 +22,41 @@ public class ServicoFreelaForm {
 
     @Size(min = 3, max = 100)
     @NonNull
-    @NotEmpty
     private String nome;
     
     @NonNull
-    @NotEmpty
-    @PositiveOrZero
     private String servicoOferecido;
 
     @NonNull
-    @NotEmpty
     @PositiveOrZero
+	@NumberFormat(style = Style.CURRENCY, pattern = "#,##0.00")
     private BigDecimal valorMedio;
 
     @NonNull
-    @NotEmpty
     private String formacao;
 
-    @NotEmpty
     @NonNull
     private String principaisHabilidades;
 
     @NonNull
-    @NotEmpty
     @PositiveOrZero
     private BigDecimal tempoDeAtuacao;
 
     @NonNull
-    @NotEmpty
     private String idioma;
 
     @NonNull
-    @NotEmpty
     @Email
     private String email;
 
     @NonNull
-    @NotEmpty
     @PositiveOrZero
     private String numeroTelefone;
 
     @NonNull
-    @NotEmpty
     private String linkedin;
 	
     @NonNull
-    @NotEmpty
 	private Icone icone;
 
 	public String getNome() {

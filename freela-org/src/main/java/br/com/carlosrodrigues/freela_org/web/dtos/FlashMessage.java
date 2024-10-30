@@ -9,10 +9,10 @@ public class FlashMessage {
 
     public FlashMessage(String classeCss, String mensagem) {
         this.classeCss = classeCss;
-        this.mensagem = mensagem;
+        this.menssagem = mensagem;
     }
 
-    private String mensagem;
+    private String menssagem;
 
 	public FlashMessage() {
     }
@@ -25,11 +25,11 @@ public class FlashMessage {
 		this.classeCss = classeCss;
 	}
 
-	public String getMensagem() {
-		return mensagem;
+	public String getMenssagem() {
+		return menssagem;
 	}
 
-	public void setMensagem(String mensagem) {
-		this.mensagem = mensagem;
+	public void setMenssagem(String mensagem) {
+		this.menssagem = mensagem;
 	}
 }

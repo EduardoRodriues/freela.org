@@ -142,5 +142,14 @@
             </div>
         </div>
     </main>
+
+    <th:block th:fragment="scripts">
+        <script th:src="@{/webjars/jquery-mask-plugin/dist/jquery.mask.min.js}"></script>
+        <script>
+            $(document).ready(function() {
+                $('.money').mask("#.##0,00", {reverse: true});
+            })
+        </script>
+    </th:block> 
 </body>
 </html>
