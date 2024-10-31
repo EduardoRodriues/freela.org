@@ -12,6 +12,6 @@ public interface UsuarioFreelaRepository extends JpaRepository <UsuarioFreela, L
     
     Optional<UsuarioFreela> findByEmail(String email);
 
-    @Query("SELECT count(*) > 0 FROM Usuario u WHERE u.email = :email and (:id is null or u.id != :id) ")
+    @Query("SELECT count(*) > 0 FROM UsuarioFreela u WHERE u.email = :email and (:id is null or u.id != :id) ")
     Boolean isEmailJaCadastrado(String email, Long id);
 }

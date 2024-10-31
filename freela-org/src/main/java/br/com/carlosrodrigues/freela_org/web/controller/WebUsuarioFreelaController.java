@@ -1,5 +1,6 @@
 package br.com.carlosrodrigues.freela_org.web.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,16 +19,17 @@ import br.com.carlosrodrigues.freela_org.web.service.WebUsuarioFreelaService;
 import jakarta.validation.Valid;
 
 @Controller
-@RequestMapping("admin/usuarios")
+@RequestMapping("/admin/usuarios")
 public class WebUsuarioFreelaController {
     
+    @Autowired
     private WebUsuarioFreelaService service;
 
     @GetMapping
     public ModelAndView mostrarTodos() {
 
-        var modelAndView = new ModelAndView("admin/usuarios/lista");
-        modelAndView.addObject("lista", service.mostrarTodos());
+        var modelAndView = new ModelAndView("admin/usuario/lista");
+        modelAndView.addObject("usuarios", service.mostrarTodos());
 
         return modelAndView;
     }
@@ -35,19 +37,19 @@ public class WebUsuarioFreelaController {
     @GetMapping("/cadastrar")
     public ModelAndView cadastrar() {
 
-        var modelAndView = new ModelAndView("admin/usuarios/cadastrar");
-        modelAndView.addObject("formCadastro", new UsuarioFreelaCadastroForm());
+        var modelAndView = new ModelAndView("admin/usuario/cadastroForm");
+        modelAndView.addObject("cadastroForm", new UsuarioFreelaCadastroForm());
 
         return modelAndView;
     }
 
     @PostMapping("/cadastrar")
-    public String cadastrar(@Valid @ModelAttribute("formCadastro") UsuarioFreelaCadastroForm form,
+    public String cadastrar(@Valid @ModelAttribute("cadastroForm") UsuarioFreelaCadastroForm form,
     BindingResult result,
     RedirectAttributes attrs) {
 
         if(result.hasErrors()) {
-            return "admin/usuarios/formCadastro";
+            return "admin/usuario/cadastroForm";
         }
 
         try{
@@ -55,29 +57,29 @@ public class WebUsuarioFreelaController {
         attrs.addFlashAttribute("alert", new FlashMessage("alert-success", "Usuario cadastrado com sucesso"));
         } catch(ValidacaoException e) {
         result.addError(e.getFieldError());
-        return "redirect:/admin/formCadastro";
+        return "admin/cadastroForm";
         }
 
-        return "redirect:/admin/usuarios";
+        return "redirect:/admin/usuario";
     }
 
     @GetMapping("/{id}/editar")
     public ModelAndView editar(@PathVariable Long id) {
 
-        var modelAndView = new ModelAndView("admin/usuarios/eitar");
-        modelAndView.addObject("formEdicao", service.buscarPorId(id));
+        var modelAndView = new ModelAndView("admin/usuario/edicaoForm");
+        modelAndView.addObject("edicaoForm", service.buscarPorId(id));
 
         return modelAndView;
     }
 
     @PostMapping("/{id}/editar")
     public String editar(@PathVariable Long id,
-    @Valid @ModelAttribute("formEdicao") UsuarioFreelaEdicaoForm form,
+    @Valid @ModelAttribute("edicaoForm") UsuarioFreelaEdicaoForm form,
     BindingResult result,
     RedirectAttributes attrs) {
 
         if(result.hasErrors()) {
-            return "admin/usuarios/formEdicao";
+            return "admin/usuario/edicaoForm";
         }
 
         try{
@@ -85,10 +87,10 @@ public class WebUsuarioFreelaController {
         attrs.addFlashAttribute("alert", new FlashMessage("alert_success", "Usuario editado com sucesso"));
         } catch(ValidacaoException e) {
             result.addError(e.getFieldError());
-            return "admin/usuarios/formEdicao";
+            return "admin/usuario/edicaoForm";
         }
 
-        return "redirect:/admin/usuarios";
+        return "redirect:/admin/usuario";
     }
 
     @GetMapping("/{id}/excluir")
@@ -97,6 +99,6 @@ public class WebUsuarioFreelaController {
         service.excluir(id);
         attrs.addFlashAttribute("alert", new FlashMessage("alert-success", "Usuario excluido com sucesso"));
 
-        return "redirect:/admin/usuarios";
+        return "redirect:/admin/usuario";
     }
 }
